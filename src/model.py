@@ -2,17 +2,17 @@ from dotenv import load_dotenv
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 import os
-load_dotenv()
+# load_dotenv()
 
 CACHE_DIR = os.path.normpath(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "files")
 )
 
 class chatModel:
-    def __init__(self, model_id:str = "google/gemma-2b-it", device = 'gpu'):
+    def __init__(self, ac_token, model_id:str = "google/gemma-2b-it", device = 'gpu'):
 
-        ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
-        self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = ACCESS_TOKEN, cache_dir = CACHE_DIR)
+        # ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+        self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = ac_token, cache_dir = CACHE_DIR)
         
         self.model = AutoModelForCausalLM.from_pretrained(model_id)
         self.model.eval()
