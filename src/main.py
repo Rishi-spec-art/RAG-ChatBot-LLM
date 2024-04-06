@@ -7,13 +7,13 @@ FILES_DIR = os.path.normpath(
 os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "files")
 )
 
-# ACCESS_TOKEN = st.secrets["ACCESS_TOKEN"]
+ACCESS_TOKEN = st.secrets["ACCESS_TOKEN"]
 
 st.title("LLM Chatbot RAG Assistant")
 
 @st.cache_resource
 def load_model():
-    model = chatModel(model_id="google/gemma-2b-it", device = 'cpu')
+    model = chatModel(model_id="google/gemma-2b-it", device = 'cpu', ac_token = ACCESS_TOKEN)
     return model
 
 @st.cache_resource
