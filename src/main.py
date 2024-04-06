@@ -8,7 +8,6 @@ os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "files")
 )
 
 ACCESS_TOKEN = st.secrets["ACCESS_TOKEN"]
-st.write(ACCESS_TOKEN)
 
 st.title("LLM Chatbot RAG Assistant")
 
