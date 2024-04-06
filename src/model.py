@@ -2,7 +2,6 @@ from dotenv import load_dotenv
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 import os
-import streamlit as st
 # load_dotenv()
 
 CACHE_DIR = os.path.normpath(
@@ -10,11 +9,9 @@ CACHE_DIR = os.path.normpath(
 )
 
 class chatModel:
-    def __init__(self, model_id:str = "google/gemma-2b-it", device = 'gpu'):
+    def __init__(self, access_token, model_id:str = "google/gemma-2b-it", device = 'gpu'):
         
-        ACCESS_TOKEN = st.secrets["ACCESS_TOKEN"]
-        
-        self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = ACCESS_TOKEN, cache_dir = CACHE_DIR)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = access_token, cache_dir = CACHE_DIR)
         
         self.model = AutoModelForCausalLM.from_pretrained(model_id)
         self.model.eval()
