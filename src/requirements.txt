@@ -3,7 +3,7 @@ streamlit
 sentence-transformers
 langchain
 pypdf
-langchain_community
+langchain-community
 numpy
 torch
 transformers
