@@ -11,8 +11,8 @@ CACHE_DIR = os.path.normpath(
 class chatModel:
     def __init__(self, model_id:str = "google/gemma-2b-it", device = 'gpu'):
 
-        ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
-        self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = ACCESS_TOKEN, cache_dir = CACHE_DIR)
+        # ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+        self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = ""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"", cache_dir = CACHE_DIR)
         
         self.model = AutoModelForCausalLM.from_pretrained(model_id)
         self.model.eval()
