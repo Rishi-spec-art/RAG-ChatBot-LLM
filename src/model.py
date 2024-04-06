@@ -12,7 +12,7 @@ class chatModel:
     def __init__(self, model_id:str = "google/gemma-2b-it", device = 'gpu'):
 
         # ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
-        self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = "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", cache_dir = CACHE_DIR)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = "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", cache_dir = CACHE_DIR)
         
         self.model = AutoModelForCausalLM.from_pretrained(model_id)
         self.model.eval()
