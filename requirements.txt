@@ -1,11 +1,11 @@
 faiss-cpu
-streamlit
+streamlit==1.29.*
 sentence-transformers
-langchain
+langchain==0.1.13
 pypdf
 langchain-community
 numpy
-torch
-transformers
-python-dotenv
-tiktoken
+torch==2.2.*
+transformers==4.39.*
+python-dotenv==1.0.*
+tiktoken==0.6.*
