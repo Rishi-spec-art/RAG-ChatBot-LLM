@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from transformers import AutoTokenizer, AutoModelForCausalLM
 import os
 load_dotenv()
 
