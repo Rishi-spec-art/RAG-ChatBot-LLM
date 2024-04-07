@@ -2,11 +2,7 @@ from dotenv import load_dotenv
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 import os
-load_dotenv()
-from dotenv import dotenv_values
-
-values = dotenv_values(".env")
-print(values)
+load_dotenv('src/.env')
 
 CACHE_DIR = os.path.normpath(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "files")
