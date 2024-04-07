@@ -14,7 +14,7 @@ class chatModel:
         ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
         self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = ACCESS_TOKEN, cache_dir = CACHE_DIR)
         
-        self.model = AutoModelForCausalLM.from_pretrained(model_id, cache_dir = CACHE_DIR, token = ACCESS_TOKEN)
+        self.model = AutoModelForCausalLM.from_pretrained(model_id, device_map = "auto", cache_dir = CACHE_DIR, token = ACCESS_TOKEN)
         self.model.eval()
         self.device = device
         self.chat = []
