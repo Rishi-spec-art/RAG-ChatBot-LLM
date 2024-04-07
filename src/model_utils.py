@@ -7,7 +7,7 @@ from langchain_community.vectorstores.utils import DistanceStrategy
 import os
 
 CACHE_DIR = os.path.normpath(
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "files")
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
 )
 
 
