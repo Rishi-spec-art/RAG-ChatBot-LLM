@@ -9,7 +9,7 @@ CACHE_DIR = os.path.normpath(
 )
 
 class chatModel:
-    def __init__(self, model_id:str = "google/gemma-2b-it", device = 'gpu'):
+    def __init__(self, model_id:str = "google/gemma-2b-it", device = 'cpu'):
 
         ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
         self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = ACCESS_TOKEN, cache_dir = CACHE_DIR)
