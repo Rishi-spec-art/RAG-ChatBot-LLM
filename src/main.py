@@ -13,7 +13,7 @@ st.title("LLM Chatbot RAG Assistant")
 
 @st.cache_resource
 def load_model():
-    model = chatModel(model_id="google/gemma-2b-it", device = 'cuda', ac_token = ACCESS_TOKEN)
+    model = chatModel(model_id="google/gemma-2b-it", device = 'cpu', ac_token = ACCESS_TOKEN)
     return model
 
 @st.cache_resource
