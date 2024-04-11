@@ -4,8 +4,9 @@ sentence-transformers
 langchain==0.1.13
 pypdf
 langchain-community
-numpy
 torch==2.2.*
 transformers==4.39.*
 python-dotenv==1.0.*
 tiktoken==0.6.*
+bitsandbytes==0.43.*
+accelerate==0.28.*
