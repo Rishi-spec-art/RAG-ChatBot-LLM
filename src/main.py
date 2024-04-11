@@ -4,7 +4,7 @@ from model import chatModel
 import model_utils
 
 FILES_DIR = os.path.normpath(
-os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
+os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "files")
 )
 
 ACCESS_TOKEN = st.secrets["ACCESS_TOKEN"]
