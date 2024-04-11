@@ -3,7 +3,6 @@ streamlit==1.29.*
 sentence-transformers
 langchain==0.1.13
 pypdf
-langchain-community
 torch==2.2.*
 transformers==4.39.*
 python-dotenv==1.0.*
