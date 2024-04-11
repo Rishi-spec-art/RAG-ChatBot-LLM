@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import torch
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 import os
 load_dotenv()
 
@@ -9,12 +9,19 @@ CACHE_DIR = os.path.normpath(
 )
 
 class chatModel:
-    def __init__(self, ac_token, model_id:str = "google/gemma-2b-it", device = 'cpu'):
+    def __init__(self, ac_token, model_id:str = "google/gemma-2b-it", device = 'cuda'):
 
         # ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
         self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = ac_token, cache_dir = CACHE_DIR)
+        quantization_config = BitsAndBytesConfig(
+            load_in_4bit=True, bnb_4bit_compute_dtype=torch.bfloat16
+        )
         
-        self.model = AutoModelForCausalLM.from_pretrained(model_id, cache_dir = CACHE_DIR, token = ac_token)
+        self.model = AutoModelForCausalLM.from_pretrained(model_id, 
+                                                          device_map = "auto",
+                                                          quantization_config = quantization_config
+                                                          cache_dir = CACHE_DIR, 
+                                                          token = ac_token)
         self.model.eval()
         self.device = device
         self.chat = []
