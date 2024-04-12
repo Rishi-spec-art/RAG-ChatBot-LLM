@@ -1,25 +1,27 @@
 from dotenv import load_dotenv
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from transformers import GemmaModel, GemmaTokenizer, GemmaForCausalLM
 import os
 load_dotenv()
 
 CACHE_DIR = os.path.normpath(
     os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models")
 )
-
+config  = GemmaConfig(hidden_activation = "gelu")
 class chatModel:
-    def __init__(self, ac_token, model_id:str = "google/gemma-2b-it", device = 'cpu'):
-
+    def __init__(self, ac_token, model_id:str = "google/gemma-7b", device = 'cpu'):
+        
         # ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
         self.tokenizer = AutoTokenizer.from_pretrained(model_id, token = ac_token, cache_dir = CACHE_DIR)
+        # self.tokenizer = GemmaTokenizer(cache_dir = CACHE_DIR)
         # quantization_config = BitsAndBytesConfig(
         #     load_in_4bit=True, bnb_4bit_compute_dtype=torch.bfloat16
         # )
         
-        self.model = AutoModelForCausalLM.from_pretrained(model_id, 
+        self.model = GemmaForCausalLM.from_pretrained(model_id, 
                                                           cache_dir = CACHE_DIR, 
-                                                          token = ac_token)
+                                                          token = ac_token, config = config)
         self.model.eval()
         self.device = device
         self.chat = []
